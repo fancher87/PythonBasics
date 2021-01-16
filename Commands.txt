@@ -13,3 +13,8 @@
 `ls` will show what in the current directory
 
 `cd ..` will move us up a director back to Desktop
+
+
+self -- used to represent the INSTANCE of a class 
+
+__init__ reserved method for python classes ; called when object is created from class and allows class to INITIALIZE the attributes of the class 
