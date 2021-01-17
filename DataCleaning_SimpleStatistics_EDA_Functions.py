@@ -21,3 +21,21 @@ df.info()
 
 #similar to dplyr in R or SQL syntax, group by
 s = df['col1'].groupby(df['col2']).value_counts().reset_index(name='counts') # name of the frequencies/counts is the string after 'name='
+
+
+#create binary variable from other variables 
+df['bin'] = np.where(df['col1'] > 14, 1, 0)
+
+
+
+#multiple conditions 
+def f(row):
+    if row['col1'] == row['col2']:
+        val = 0
+    elif row['col1'] > row['col2']:
+        val = 1
+    else:
+        val = -1
+    return val
+
+df['multiple_conditions'] = df.apply(f, axis=1)
