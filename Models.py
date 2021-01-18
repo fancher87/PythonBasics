@@ -14,6 +14,14 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.show
 
+#split data into testing and training set first 
+from sklearn.model_selection import train_test_split
+
+train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
+
+
+
+
 #build simple linear regression model and assign stats 
 (slope, intercept, rvalue, pvalue, stderr) = linregress(x, y)
 
