@@ -69,13 +69,12 @@ corr_matrix["col1"].sort_values(ascending=False) #get the correlations of all va
 
 
 
-# get scatter plot matrix for selected variables 
+# get scatter plot matrix for selected variables -- nice correlation graphs 
 from pandas.plotting import scatter_matrix
 
 attributes = ["col1", "col2", "col3",
               "col4"]
 scatter_matrix(df[attributes], figsize=(12, 8))
-save_fig("scatter_matrix_plot")
 #diagonal is just histogram of the variable itself , others are x,y 
 
 
