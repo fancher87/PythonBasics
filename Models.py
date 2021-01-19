@@ -44,6 +44,16 @@ set_params(**params)
 from sklearn.linear_model import LinearRegression
 
 
+#######print out the regression coefficients and model stats 
+import statsmodels.api as sm
+#The 0th column contains only 1 in each 50 rows
+X= np.append(arr = np.ones((50,1)).astype(int), values = X, axis=1) 
+X_opt= X[:, [0,1,2,3,4,5]]
+#Optimal X contains the highly impacted independent variables
+#OLS: Oridnary Least Square Class. endog is the dependent variable, #exog is the number of observations
+regressor_OLS=sm.OLS(endog = Y, exog = X_opt).fit()
+regressor_OLS.summary()
+
 
 #classification
 import sklearn as sk
