@@ -34,6 +34,7 @@ df.head() # look at first five rows make sure it popualtes as expected
 df.info()
 
 
+
 #get values for one column of interest
 df['col1'].value_counts()
 
@@ -69,6 +70,12 @@ corr_matrix["col1"].sort_values(ascending=False) #get the correlations of all va
 
 
 
+#correlation matrix on ALL variables 
+corrMatrix = df.corr()
+print (corrMatrix)
+
+
+
 # get scatter plot matrix for selected variables -- nice correlation graphs 
 from pandas.plotting import scatter_matrix
 
@@ -80,3 +87,21 @@ scatter_matrix(df[attributes], figsize=(12, 8))
 
 
 
+
+
+#multicolinearity check (VIF)
+
+from statsmodels.stats.outliers_influence import variance_inflation_factor 
+    
+# the independent variables set 
+vif_check = df[['col1','col2']] 
+  
+# VIF dataframe 
+vif_data = pd.DataFrame() 
+vif_data["feature"] = vif_check.columns 
+  
+# calculating VIF for each feature 
+vif_data["VIF"] = [variance_inflation_factor(vif_check.values, i) 
+                          for i in range(len(vif_check.columns))] 
+  
+print(vif_data)
